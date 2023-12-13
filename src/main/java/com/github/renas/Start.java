@@ -1,14 +1,16 @@
 package com.github.renas;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.github.renas.userItems.Gun;
+import com.github.renas.userItems.Player;
+
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Start {
 
     private Input input = new Input();
-    private User user = new User();
+    private Player player = new Player();
+
+
     public Start() {
         System.out.println("Welcome to ZombieLand, rules: DONT DIE.  Options will be in upper case");
         System.out.println("You wake up in a small house, you look outside and there is one zombie walking around" +
@@ -17,20 +19,20 @@ public class Start {
         String input1 = input.getInput("Do you TAKE the gun and the bullets?");
 
         if (Objects.equals(input1, "TAKE")){
-            Map<Integer, String> itemsCollected = new HashMap<>();
-            itemsCollected.put(1,"gun");
-            itemsCollected.put(7,"bullets");
-            System.out.println(user.addToInventory(itemsCollected));
+            Gun gun1 = new Gun();
+            gun1.bulletsFound(7);
+            System.out.println(player.addToInventory(gun1));
+
         }
 
         String input2 = input.getInput("you exit the house, do you ATTACK the zombie or SNEAK away from it?");
 
         switch (input2){
             case "ATTACK":
-                System.out.println(user.attack());
+                System.out.println(player.attack());
                 break;
             case "SNEAK":
-                System.out.println(user.sneak());
+                System.out.println(player.sneak());
         }
 
     }
