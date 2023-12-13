@@ -3,6 +3,8 @@ package com.github.renas.userItems;
 public class Gun implements Weapon {
 
     public int bullets;
+
+    public int gunDamage = 10;
     public Gun(){
     }
 
@@ -10,7 +12,7 @@ public class Gun implements Weapon {
         bullets+=numberOfBulletsFound;
     }
     public void bulletsUsed(int numberOfBulletsUsed){
-        bullets+=numberOfBulletsUsed;
+        bullets-=numberOfBulletsUsed;
     }
 
     @Override

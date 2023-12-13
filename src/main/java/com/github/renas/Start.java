@@ -21,7 +21,8 @@ public class Start {
         if (Objects.equals(input1, "TAKE")){
             Gun gun1 = new Gun();
             gun1.bulletsFound(7);
-            System.out.println(player.addToInventory(gun1));
+           player.addToInventory(gun1);
+            System.out.println(gun1.toString());
 
         }
 
@@ -29,10 +30,10 @@ public class Start {
 
         switch (input2){
             case "ATTACK":
-                System.out.println(player.attack());
+                System.out.println("player.attack()");
                 break;
             case "SNEAK":
-                System.out.println(player.sneak());
+                System.out.println("player.sneak()");
         }
 
     }

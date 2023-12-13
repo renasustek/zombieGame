@@ -18,12 +18,13 @@ public class Player {
 
     }
 
-    public String addToInventory(Weapon item){
+    public Weapon addToInventory(Weapon item){
         weaponInventory.add(item);
-        return item.toString();
+        return item;
     }
 
-    public String attack(){
+    public String attack(Weapon weaponUsed){
+
         return "zombies attacked";
     }
 
