@@ -17,9 +17,7 @@ public class Start {
             System.out.println("+1 gun +7 bullets");
         }
 
-        System.out.println("you exit the house, do you ATTACK the zombie or SNEAK away from it?");
-        Scanner scanner = new Scanner(System.in);
-        String input2 = scanner.nextLine();
+        String input2 = input.getInput("you exit the house, do you ATTACK the zombie or SNEAK away from it?");
 
         switch (input2){
             case "ATTACK":
