@@ -1,5 +1,6 @@
 package com.github.renas.userItems;
 
+import com.github.renas.Input;
 import com.github.renas.userLevels.AttackLevel;
 import com.github.renas.userLevels.SneakLevel;
 import com.github.renas.zombies.Zombie;
@@ -14,32 +15,62 @@ public class Player {
     private AttackLevel attackLevel;
 
     private SneakLevel sneakLevel;
-    public Player(){
+
+    Input input = new Input();
+
+    public Player() {
 
     }
 
-    public Weapon addToInventory(Weapon item){
+    public void playerDied(String reasonOfDeath) {
+        System.out.println("you died" + reasonOfDeath + "sorry :(");
+    }
+
+    public Weapon addToInventory(Weapon item) {
         weaponInventory.add(item);
         return item;
     }
 
-    public void attack(Weapon weaponUsed, Zombie zombiesToAttack){
+    public void attack(Zombie zombiesToAttack) {
+
+        Weapon weaponUsed = chooseWeapon();
+
         System.out.println("the zombie health is: " + zombiesToAttack.health);
 
-        while (!zombiesToAttack.isZombieDead()){
+        while (!zombiesToAttack.isZombieDead()) {
             Bullets bulletHittingZombie = weaponUsed.useWeapon();
-            if (bulletHittingZombie == Bullets.OUT_OF_AMMO){
-                System.out.println("OUT OF AMMO YOU DIED");
+            if (bulletHittingZombie == Bullets.OUT_OF_AMMO) {
+                playerDied("you ran out of ammo and the zombies overran you");
                 break;
-            }else {
+            } else {
                 System.out.println("zombie health is: " + zombiesToAttack.damageInfliction(bulletHittingZombie.getValue()));
-            }//todo need to update inventory inside of player to reflect change in bullets
+            }
+        }
+    }
+
+    private Weapon chooseWeapon() {
+        String chooseWeaponInput = input.getInput("Do you want to use a GUN or a KNIFE?");
+        switch (chooseWeaponInput) {
+            case "GUN":
+                for (Weapon weapon : weaponInventory) {
+                    if (weapon instanceof Gun) {
+                        return weapon;
+                    }
+                }
+                break;
+            case "KNIFE":
+                for (Weapon weapon : weaponInventory) {
+                    if (weapon instanceof Knife) {
+                        return weapon;
+                    }
+                }
+
+        }
+        return null;
+    }
+
+        public String sneak () {
+            return "shhhh, you snuck away";
         }
 
     }
-
-    public String sneak(){
-        return "shhhh, you sunk away";
-    }
-
-}

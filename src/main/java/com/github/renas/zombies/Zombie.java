@@ -1,11 +1,10 @@
 package com.github.renas.zombies;
 
 public class Zombie {
-    public int health = 30;
-
+    public int health;
 
     public Zombie(ZombieHordeDifficulty zombieHordeDifficulty){
-        this.health *= zombieHordeDifficulty.getNumOfZombies();
+        this.health = zombieHordeDifficulty.getNumOfZombies() * 30;
     }
     public int damageInfliction(int damageDone){
         health -= damageDone;
@@ -13,10 +12,7 @@ public class Zombie {
     }
 
     public boolean isZombieDead(){
-        return health == 0;
+        return health <= 0;
     }
-
-
-
 
 }

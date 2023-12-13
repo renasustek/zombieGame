@@ -32,7 +32,7 @@ public class Start {
 
         switch (input2){
             case "ATTACK":
-                player.attack(gun1,new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE));
+                player.attack(new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE));
                 break;
             case "SNEAK":
                 System.out.println("player.sneak()");
