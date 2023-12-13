@@ -31,5 +31,6 @@ public class Start {
             case "SNEAK":
                 System.out.println("sneak class here");
         }
+
     }
 }
