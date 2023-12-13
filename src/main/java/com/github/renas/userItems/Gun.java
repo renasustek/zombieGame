@@ -11,21 +11,17 @@ public class Gun implements Weapon {
     public void loadMag(int numberOfBulletsFound){
         bullets+=numberOfBulletsFound;
     }
-    public Ammo checkMag(){
-        if (bullets<=0){
-            return Ammo.OUT_OF_AMMO;
-        } else {
-            return Ammo.ENOUGH_BULLETS;
-        }
-    }
 
     @Override
-    public int useWeapon() {
-        if (checkMag() == Ammo.OUT_OF_AMMO) return 0;
-        else {
+    public Bullets useWeapon() {
+        if (bullets<=0){
+            return Bullets.OUT_OF_AMMO;
+        } else {
             bullets-=1;
-            return gunDamage;
-        }
+            System.out.println("SHOT FIRED - - - ¬");
+            System.out.println("<< -1 bullets >>");
+            return Bullets.HIT;
+        }//todo hit or miss needs to be done
     }
 
     @Override

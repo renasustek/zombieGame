@@ -1,6 +1,7 @@
 package com.github.renas.userItems;
 
 import com.github.renas.zombies.Zombie;
+import com.github.renas.zombies.ZombieHordeDifficulty;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,18 +16,6 @@ class GunTest {
         assertEquals(7, gun.bullets);
     }
     @Test
-    void whenUseBulletsIsCalledWhenBulletsIsFInishedShouldReturnOutOFAmmo(){
-        Gun gun = new Gun();
-        assertEquals(Ammo.OUT_OF_AMMO, gun.checkMags(7));
-    }
-    @Test
-    void whenUseBulletsIsCalledWhenEnoughBulletsPresentShouldReturnEnoughBullets(){
-        Gun gun = new Gun();
-        gun.loadMag(10);
-        assertEquals(Ammo.ENOUGH_BULLETS, gun.checkMags(7));
-    }
-
-    @Test
     void WhenUseWeaponIsCalledOneBulletIsUsed(){
         Gun gun = new Gun();
         gun.loadMag(2);
@@ -35,11 +24,20 @@ class GunTest {
     }
 
     @Test
-    void WhenUseWeaponIsCalled10DamageSHouldBeDoneToTheZombie(){
-        Zombie zombiesToAttack = new Zombie();
+    void weaponCalledButNoBulletsNoDamageShouldBeDoneToZombie(){
+        Zombie zombiesToAttack = new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE);
         int beforeDamagedHealth = zombiesToAttack.health;
         Gun gun = new Gun();
-        zombiesToAttack.damageInfliction(gun.useWeapon());
+        zombiesToAttack.damageInfliction(gun.useWeapon().getValue());
+        assertEquals(30, zombiesToAttack.health);
+    }
+    @Test
+    void WhenUseWeaponIsCalled10DamageSHouldBeDoneToTheZombie(){
+        Zombie zombiesToAttack = new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE);
+        int beforeDamagedHealth = zombiesToAttack.health;
+        Gun gun = new Gun();
+        gun.loadMag(1);
+        zombiesToAttack.damageInfliction(gun.useWeapon().getValue());
         assertEquals(beforeDamagedHealth - gun.gunDamage, zombiesToAttack.health);
     }
 }

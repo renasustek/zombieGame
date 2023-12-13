@@ -2,6 +2,8 @@ package com.github.renas;
 
 import com.github.renas.userItems.Gun;
 import com.github.renas.userItems.Player;
+import com.github.renas.zombies.Zombie;
+import com.github.renas.zombies.ZombieHordeDifficulty;
 
 import java.util.Objects;
 
@@ -9,6 +11,7 @@ public class Start {
 
     private Input input = new Input();
     private Player player = new Player();
+    Gun gun1 = new Gun();
 
 
     public Start() {
@@ -17,10 +20,9 @@ public class Start {
                 "on the table there is a gun and 7 bullets");
 
         String input1 = input.getInput("Do you TAKE the gun and the bullets?");
-
         if (Objects.equals(input1, "TAKE")){
-            Gun gun1 = new Gun();
-            gun1.bulletsFound(7);
+
+            gun1.loadMag(7);
            player.addToInventory(gun1);
             System.out.println(gun1.toString());
 
@@ -30,7 +32,7 @@ public class Start {
 
         switch (input2){
             case "ATTACK":
-                System.out.println("player.attack()");
+                player.attack(gun1,new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE));
                 break;
             case "SNEAK":
                 System.out.println("player.sneak()");
