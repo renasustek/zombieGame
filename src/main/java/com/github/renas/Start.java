@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Start {
 
     private Input input = new Input();
-    private UserActions userActions = new UserActions();
+    private User user = new User();
     public Start() {
         System.out.println("Welcome to ZombieLand, rules: DONT DIE.  Options will be in upper case");
         System.out.println("You wake up in a small house, you look outside and there is one zombie walking around" +
@@ -20,17 +20,17 @@ public class Start {
             Map<Integer, String> itemsCollected = new HashMap<>();
             itemsCollected.put(1,"gun");
             itemsCollected.put(7,"bullets");
-            System.out.println(userActions.addToInventory(itemsCollected));
+            System.out.println(user.addToInventory(itemsCollected));
         }
 
         String input2 = input.getInput("you exit the house, do you ATTACK the zombie or SNEAK away from it?");
 
         switch (input2){
             case "ATTACK":
-                System.out.println(userActions.attack());
+                System.out.println(user.attack());
                 break;
             case "SNEAK":
-                System.out.println(userActions.sneak());
+                System.out.println(user.sneak());
         }
 
     }
