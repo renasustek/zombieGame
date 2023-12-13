@@ -1,6 +1,8 @@
 package com.github.renas.userItems;
 
 import com.github.renas.userItems.Weapon;
+import com.github.renas.userLevels.AttackLevel;
+import com.github.renas.userLevels.SneakLevel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +11,9 @@ public class Player {
 
     private List<Weapon> weaponInventory = new ArrayList<>();
 
-    private Integer attackLevel;//TODO make into enum
+    private AttackLevel attackLevel;
 
-    private Integer sneakLevel;//TODO make into enum
+    private SneakLevel sneakLevel;
     public Player(){
 
     }
