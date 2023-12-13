@@ -11,9 +11,8 @@ public class Gun implements Weapon {
     public void loadMag(int numberOfBulletsFound){
         bullets+=numberOfBulletsFound;
     }
-    public Ammo checkMags(int numberOfBulletsUsed){
-        bullets -= numberOfBulletsUsed
-        if (bullets<0){
+    public Ammo checkMag(){
+        if (bullets<=0){
             return Ammo.OUT_OF_AMMO;
         } else {
             return Ammo.ENOUGH_BULLETS;
@@ -22,8 +21,11 @@ public class Gun implements Weapon {
 
     @Override
     public int useWeapon() {
-        bullets-=1;
-        return gunDamage;
+        if (checkMag() == Ammo.OUT_OF_AMMO) return 0;
+        else {
+            bullets-=1;
+            return gunDamage;
+        }
     }
 
     @Override
