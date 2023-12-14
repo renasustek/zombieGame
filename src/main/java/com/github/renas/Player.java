@@ -53,6 +53,7 @@ public class Player {
 
     private Weapon chooseWeapon() {
         System.out.println("Weapons in inventory:");
+
         for (Weapon weapon : weaponInventory){
             System.out.println(weapon.toString());
         }
