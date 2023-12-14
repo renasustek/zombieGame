@@ -54,11 +54,7 @@ public class Player {
     private Weapon chooseWeapon() {
         System.out.println("Weapons in inventory:");
         for (Weapon weapon : weaponInventory){
-            if (weapon instanceof Gun){
-                System.out.println("GUN" + " " + ((Gun) weapon).bullets + " bullets");
-            } else if (weapon instanceof Knife) {
-                System.out.println("Knife");//todo just call to string instead
-            }
+            System.out.println(weapon.toString());
         }
         String chooseWeaponInput = input.getInput("which weapon do you want to use");
 

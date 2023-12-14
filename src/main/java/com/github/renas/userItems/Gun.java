@@ -24,6 +24,6 @@ public class Gun implements Weapon {
 
     @Override
     public String toString() {
-        return "<< Gun +"+ bullets + " bullets >>";
+        return "<< GUN +"+ bullets + " bullets >>";
     }
 }

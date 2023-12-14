@@ -8,4 +8,9 @@ public class Knife implements Weapon {
         return DamageLevel.HIGH_DAMAGE;
     }
 
+    @Override
+    public String toString() {
+        return "<< Knife >>";
+    }
+
 }

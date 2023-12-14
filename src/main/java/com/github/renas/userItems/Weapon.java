@@ -4,4 +4,5 @@ public interface Weapon {
 
     DamageLevel use();
 
+    String toString();
 }
