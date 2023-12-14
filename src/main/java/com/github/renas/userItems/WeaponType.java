@@ -1,4 +1,4 @@
-package com.github.renas;
+package com.github.renas.userItems;
 
 public enum WeaponType {
     GUN,KNIFE
