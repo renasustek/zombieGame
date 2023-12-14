@@ -1,12 +1,13 @@
 package com.github.renas.userItems;
 
-public enum Bullets {
-    OUT_OF_AMMO(0),
-    HIT(10),
-    MISSED(0);
+public enum DamageLevel {
+    NO_DAMAGE(0),
+    LOW_DAMAGE(5),
+    MEDIUM_DAMAGE(10),
+    HIGH_DAMAGE(30);
 
     private final int value;
-    Bullets(int value) {
+    DamageLevel(int value) {
         this.value = value;
     }
     public int getValue() {

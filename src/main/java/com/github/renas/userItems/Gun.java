@@ -3,8 +3,6 @@ package com.github.renas.userItems;
 public class Gun implements Weapon {
 
     public int bullets;
-
-    public int gunDamage = 10;
     public Gun(){
     }
 
@@ -13,14 +11,14 @@ public class Gun implements Weapon {
     }
 
     @Override
-    public Bullets useWeapon() {
+    public DamageLevel use() {
         if (bullets<=0){
-            return Bullets.OUT_OF_AMMO;
+            return DamageLevel.NO_DAMAGE;
         } else {
             bullets-=1;
             System.out.println("SHOT FIRED - - - ¬");
             System.out.println("<< -1 bullets >>");
-            return Bullets.HIT;
+            return DamageLevel.MEDIUM_DAMAGE;
         }//todo hit or miss needs to be done
     }
 

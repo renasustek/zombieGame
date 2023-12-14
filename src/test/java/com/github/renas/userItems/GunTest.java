@@ -19,7 +19,7 @@ class GunTest {
     void WhenUseWeaponIsCalledOneBulletIsUsed(){
         Gun gun = new Gun();
         gun.loadMag(2);
-        gun.useWeapon();
+        gun.use();
         assertEquals(1,gun.bullets);
     }
 
@@ -28,7 +28,7 @@ class GunTest {
         Zombie zombiesToAttack = new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE);
         int beforeDamagedHealth = zombiesToAttack.health;
         Gun gun = new Gun();
-        zombiesToAttack.damageInfliction(gun.useWeapon().getValue());
+        zombiesToAttack.damageInfliction(gun.use().getValue());
         assertEquals(30, zombiesToAttack.health);
     }
     @Test
@@ -37,7 +37,7 @@ class GunTest {
         int beforeDamagedHealth = zombiesToAttack.health;
         Gun gun = new Gun();
         gun.loadMag(1);
-        zombiesToAttack.damageInfliction(gun.useWeapon().getValue());
+        zombiesToAttack.damageInfliction(gun.use().getValue());
         assertEquals(beforeDamagedHealth - gun.gunDamage, zombiesToAttack.health);
     }
 }

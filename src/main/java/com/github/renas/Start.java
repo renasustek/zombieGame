@@ -1,7 +1,6 @@
 package com.github.renas;
 
 import com.github.renas.userItems.Gun;
-import com.github.renas.userItems.Player;
 import com.github.renas.zombies.Zombie;
 import com.github.renas.zombies.ZombieHordeDifficulty;
 

@@ -1,6 +1,9 @@
-package com.github.renas.userItems;
+package com.github.renas;
 
-import com.github.renas.Input;
+import com.github.renas.userItems.DamageLevel;
+import com.github.renas.userItems.Gun;
+import com.github.renas.userItems.Knife;
+import com.github.renas.userItems.Weapon;
 import com.github.renas.userLevels.AttackLevel;
 import com.github.renas.userLevels.SneakLevel;
 import com.github.renas.zombies.Zombie;
@@ -38,8 +41,8 @@ public class Player {
         System.out.println("the zombie health is: " + zombiesToAttack.health);
 
         while (!zombiesToAttack.isZombieDead()) {
-            Bullets bulletHittingZombie = weaponUsed.useWeapon();
-            if (bulletHittingZombie == Bullets.OUT_OF_AMMO) {
+            DamageLevel bulletHittingZombie = weaponUsed.use();
+            if (bulletHittingZombie == DamageLevel.NO_DAMAGE) {
                 playerDied("you ran out of ammo and the zombies overran you");
                 break;
             } else {
