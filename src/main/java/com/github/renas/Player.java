@@ -2,8 +2,6 @@ package com.github.renas;
 
 import com.github.renas.userItems.DamageLevel;
 import com.github.renas.userItems.Weapon;
-import com.github.renas.userLevels.AttackLevel;
-import com.github.renas.userLevels.SneakLevel;
 import com.github.renas.zombies.Zombie;
 import com.github.renas.zombies.ZombieHordeDifficulty;
 
