@@ -38,6 +38,6 @@ class GunTest {
         Gun gun = new Gun();
         gun.loadMag(1);
         zombiesToAttack.damageInfliction(gun.use().getValue());
-        assertEquals(beforeDamagedHealth - gun.gunDamage, zombiesToAttack.health);
+        assertEquals(beforeDamagedHealth - DamageLevel.MEDIUM_DAMAGE.getValue(), zombiesToAttack.health);
     }
 }

@@ -8,8 +8,7 @@ import com.github.renas.userLevels.AttackLevel;
 import com.github.renas.userLevels.SneakLevel;
 import com.github.renas.zombies.Zombie;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Player {
 
@@ -30,7 +29,7 @@ public class Player {
     }
 
     public Weapon addToInventory(Weapon item) {
-        weaponInventory.add(item);
+        weaponInventory.add(item);//todo need to find a way of putting weapon type and weapon into map
         return item;
     }
 
@@ -39,6 +38,7 @@ public class Player {
         Weapon weaponUsed = chooseWeapon();
 
         System.out.println("the zombie health is: " + zombiesToAttack.health);
+
 
         while (!zombiesToAttack.isZombieDead()) {
             DamageLevel bulletHittingZombie = weaponUsed.use();
@@ -52,24 +52,34 @@ public class Player {
     }
 
     private Weapon chooseWeapon() {
-        String chooseWeaponInput = input.getInput("Do you want to use a GUN or a KNIFE?");
+        System.out.println("Weapons in inventory:");
+        for (Weapon weapon : weaponInventory){
+            if (weapon instanceof Gun){
+                System.out.println("GUN" + " " + ((Gun) weapon).bullets + " bullets");
+            } else if (weapon instanceof Knife) {
+                System.out.println("Knife");//todo just call to string instead
+            }
+        }
+        String chooseWeaponInput = input.getInput("which weapon do you want to use");
+
         switch (chooseWeaponInput) {
             case "GUN":
                 for (Weapon weapon : weaponInventory) {
                     if (weapon instanceof Gun) {
-                        return weapon;
+                        return Optional.of(weapon);
                     }
                 }
+                return Optional.empty();
                 break;
             case "KNIFE":
                 for (Weapon weapon : weaponInventory) {
                     if (weapon instanceof Knife) {
-                        return weapon;
+                        return Optional.of(weapon);
                     }
                 }
-
+                Optional.empty();
         }
-        return null;
+        return Optional.empty()
     }
 
         public String sneak () {
