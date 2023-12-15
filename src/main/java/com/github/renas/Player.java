@@ -3,7 +3,6 @@ package com.github.renas;
 import com.github.renas.userItems.DamageLevel;
 import com.github.renas.userItems.Weapon;
 import com.github.renas.zombies.Zombie;
-import com.github.renas.zombies.ZombieHordeDifficulty;
 
 import java.util.*;
 
@@ -13,7 +12,7 @@ public class Player {
 
     private List<Weapon> weaponInventory = new ArrayList<>();
 
-    private int goldCoins = 0;
+    private GoldCoins goldCoins = new GoldCoins();
     Input input = new Input();
 
 
@@ -21,12 +20,17 @@ public class Player {
 
     }
 
-    public void playerDied(String reasonOfDeath) {
-        System.out.println("you died" + reasonOfDeath + "sorry :(");
+    public boolean spendCoins(int spentAmount){
+        return goldCoins.deduct(spentAmount);
     }
 
-    public Weapon addToInventory(Weapon item) {
-        weaponInventory.add(item);//todo need to find a way of putting weapon type and weapon into map
+    public void playerDied(String reasonOfDeath) {
+        System.out.println("you died" + reasonOfDeath + "sorry :(");
+        System.exit(0);
+    }
+
+    public Weapon addToWeaponInventory(Weapon item) {
+        weaponInventory.add(item);
         return item;
     }
 
@@ -46,11 +50,9 @@ public class Player {
             }
         }
 
-        if (zombiesToAttack.zombieDifficulty!=ZombieHordeDifficulty.SINGLE_ZOMBIE){
-            System.out.println("You killed "+ zombiesToAttack.zombieDifficulty.getNumOfZombies() + "ZOMBIES, WELLDONNEE");
-        } else{
-            System.out.println("you only killed " + zombiesToAttack.zombieDifficulty.getNumOfZombies() + " zombies, kill more to increase your skills.");
-        }
+        int numOfZombies = zombiesToAttack.zombieDifficulty.getNumOfZombies();
+
+        System.out.println("You killed " + numOfZombies + " zombies and you collected " + goldCoins.collect(numOfZombies)+" gold coins");
 
     }
 

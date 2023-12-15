@@ -12,7 +12,7 @@ class PlayerTest {
     void whenGivenValidWeaponShouldAddToListAndReturnString(){
         Gun testGun = new Gun();
 
-        assertEquals(testGun, player.addToInventory(testGun));
+        assertEquals(testGun, player.addToWeaponInventory(testGun));
 
     }
 

@@ -2,11 +2,11 @@ package com.github.renas.zombies;
 
 public class Zombie {
     public int health;
-    public ZombieHordeDifficulty zombieDifficulty;
+    public ZombieHordeSize zombieDifficulty;
 
-    public Zombie(ZombieHordeDifficulty zombieHordeDifficulty){
-        this.health = zombieHordeDifficulty.getNumOfZombies() * 30;
-        this.zombieDifficulty = zombieHordeDifficulty;
+    public Zombie(ZombieHordeSize zombieHordeSize){
+        this.health = zombieHordeSize.getNumOfZombies() * 30;
+        this.zombieDifficulty = zombieHordeSize;
     }
     public int damageInfliction(int damageDone){
         health -= damageDone;

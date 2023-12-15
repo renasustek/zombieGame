@@ -1,7 +1,7 @@
 package com.github.renas.userItems;
 
 import com.github.renas.zombies.Zombie;
-import com.github.renas.zombies.ZombieHordeDifficulty;
+import com.github.renas.zombies.ZombieHordeSize;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +25,7 @@ class GunTest {
 
     @Test
     void weaponCalledButNoBulletsNoDamageShouldBeDoneToZombie(){
-        Zombie zombiesToAttack = new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE);
+        Zombie zombiesToAttack = new Zombie(ZombieHordeSize.SINGLE_ZOMBIE);
         int beforeDamagedHealth = zombiesToAttack.health;
         Gun gun = new Gun();
         zombiesToAttack.damageInfliction(gun.use().getValue());
@@ -33,7 +33,7 @@ class GunTest {
     }
     @Test
     void WhenUseWeaponIsCalled10DamageSHouldBeDoneToTheZombie(){
-        Zombie zombiesToAttack = new Zombie(ZombieHordeDifficulty.SINGLE_ZOMBIE);
+        Zombie zombiesToAttack = new Zombie(ZombieHordeSize.SINGLE_ZOMBIE);
         int beforeDamagedHealth = zombiesToAttack.health;
         Gun gun = new Gun();
         gun.loadMag(1);

@@ -11,15 +11,15 @@ public class GoldCoins {
          return amountOfCoins+=coinsCollected;
     }
 
-    public int deduct(int coinsDeducted){
-        if (checkSuffcientFunds()){
-            return 0;
+    public boolean deduct(int coinsDeducted){
+        if (amountOfCoins-coinsDeducted<0){
+            return false;
+        }else {
+            amountOfCoins -= coinsDeducted;
+            return true;
         }
-         return amountOfCoins-= coinsDeducted;
     }
 
-    private boolean checkSuffcientFunds(){
-        return amountOfCoins <= 0;
-    }
+
 
 }
